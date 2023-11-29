@@ -1,0 +1,185 @@
+// ###############    Events , Functions and States
+
+
+
+// (1)  Event in next.js
+// (2)  Make function and call
+// (3)  Call Component as function
+// (4)  make State and Update
+// (5)  Interview Questions
+
+// ###############    Events  and    Functions          ########
+
+
+//   (1)    'use client'
+//             import Image from 'next/image'
+//             import styles from './page.module.css'
+
+//             export default function Home() {
+//             const apple =()=> {
+//             alert("hello next js ")
+//             }
+//             return (
+//                 <main className={styles.main}>
+                
+//             <h1>Events, Functions and States</h1>
+//             <button onClick={apple}>Click me</button>
+//                 </main>
+//             )
+//             }
+
+
+//                 (2) 'use client'
+//             import Image from 'next/image'
+//             import styles from './page.module.css'
+
+//             export default function Home() {
+//             const apple =(item)=> {
+//             alert(item);
+//             }
+//             return (
+//                 <main className={styles.main}>
+                
+//             <h1>Events, Functions and States</h1>
+//             <button onClick={()=>apple("RainBow color")}>Click me</button>
+//                 </main>
+//             )
+//             }
+
+
+
+
+// #################            States          ###########
+
+
+
+
+//                 'use client'
+//                 import Image from 'next/image'
+//                 import styles from './page.module.css'
+//                 import { useState } from 'react'
+
+//                 export default function Home() {
+//                 const [name,setName]=useState("Anil")
+
+//                 const apple =()=> {
+
+//                 setName("Gaurav")
+//                 }
+//                 return (
+//                     <main className={styles.main}>
+                    
+//                 <h1>Events, Functions and States {name}</h1>
+//                 <button onClick={()=>apple()}>Click me</button>
+//                     </main>
+//                 )
+//                 }
+
+
+
+
+
+
+
+
+
+
+// 1) What is "use Client" in the next.js?
+            
+//                 (1)    'use client'
+//             import Image from 'next/image'
+//             import styles from './page.module.css'
+
+//             export default function Home() {
+//             const apple =()=> {
+//             alert("hello next js ")
+//             }
+//             return (
+//                 <main className={styles.main}>
+                
+//             <h1>Events, Functions and States</h1>
+//             <button onClick={apple}>Click me</button>
+//                 </main>
+//             )
+//             }
+
+
+//                 (2) 'use client'
+//             import Image from 'next/image'
+//             import styles from './page.module.css'
+
+//             export default function Home() {
+//             const apple =(item)=> {
+//             alert(item);
+//             }
+//             return (
+//                 <main className={styles.main}>
+                
+//             <h1>Events, Functions and States</h1>
+//             <button onClick={()=>apple("RainBow color")}>Click me</button>
+//                 </main>
+//             )
+//             }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 2)  how to call the function in next.js?
+// 3) make a Component inside a component?
+
+
+
+
+
+//   'use client'
+//                 import Image from 'next/image'
+//                 import styles from './page.module.css'
+//                 import { useState } from 'react'
+
+//                 export default function Home() {
+//                 const [name,setName]=useState("Anil")
+
+//                 const apple =()=> {
+
+//                 setName("Gaurav")
+//                 }
+
+
+//                 const InnerComp= () => {
+//                     return(
+//                         <h1>Inner Component</h1>
+//                     )
+//                 }
+
+
+
+//                 return (
+//                     <main className={styles.main}>
+                    
+//                 <h1>Events, Functions and States {name}</h1>
+//                 <button onClick={()=>apple()}>Click me</button>
+//                 <InnerComp />
+//                     </main>
+//                 )
+//                 }
+
+
+
+  
+
+
+
+
+
+
+// 4) Call component as a function?
+// 5) what is a state in React?

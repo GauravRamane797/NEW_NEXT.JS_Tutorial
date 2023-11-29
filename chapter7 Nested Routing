@@ -1,0 +1,123 @@
+##############   Nested Routing    ########
+
+(1) What is Nested Routing?
+
+
+    (1)  - NORMAL ROUTING 
+
+     NORMAL ROUTING PATH ->  
+        - localhost:3000/about
+        - src/about/page.js
+     
+
+        (1) Home
+        (2) About
+        (3) Login
+        (4) Profile
+        (5) Setting
+
+    (2)  - NESTED ROUTING
+
+     NORMAL ROUTING PATH ->  
+        (1) - localhost:3000/aboutcollege
+        - src/about/aboutcollege/page.js
+
+        (2) - localhost:3000/aboutstudent
+        - src/about/aboutstudent/page.js
+
+        (1) Home
+        (2) About - About Student, About College
+        (3) Login - Student Login, Teacher Login
+
+
+
+
+
+
+
+
+STEP -- (1)
+                    "use client"
+            import Link from "next/link";
+            import { useRouter } from "next/navigation";
+
+            <!-- const LoginTeacher = () => {
+                const router = useRouter();
+                return (
+                    <div>
+                        <h1> login Page</h1>
+                        <Link href="/"> Go to Home Page</Link>
+                        <br />
+                        <br />
+                        <button onClick={()=>router.push("/login/LoginStudent") }>Go to Student Login page</button> 
+                        <br />
+                        <br />
+                        <button onClick={()=>router.push("/login/LoginTeacher") }>Go to Teacher Login page</button>                        
+                    </div>
+                )
+            }
+            export default LoginTeacher; -->
+
+
+
+
+
+
+
+STEP -- (2)
+
+            "use client"
+            import Link from "next/link";
+            import { useRouter } from "next/navigation";
+
+            <!-- const LoginTeacher = () => {
+                const router = useRouter();
+                const nevigate = (page) => {
+                    router.push("/login/" + page)
+                }
+                return (
+                    <div>
+                        <h1> login Page</h1>
+                        <Link href="/"> Go to Home Page</Link>
+                        <br />
+                        <br />
+                        <button onClick={() => nevigate("LoginStudent")}>Go to Student Login page</button>
+                        <br />
+                        <br />
+                        <button onClick={() => nevigate("LoginTeacher")}>Go to Teacher Login page</button>
+
+                    </div>
+                )
+            } -->
+            export default LoginTeacher;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            2) Make Nested Routing?
+            3) Make navigation between Nested pages
+            4) interview questions 
+                - What is Nested Routing?
+                - Pattern for nested Routing?
+                
+
+
+
+

@@ -1,0 +1,61 @@
+ #### First Program in Next.js
+
+
+
+ 1)  Write Fresh code in Page.js
+ 2)  Make Component
+ 3)  Reuse Component
+ 4)  Data passing in component --> using main to User data is export
+ 5)  interview Questions
+
+
+
+
+#############-----most important question in interview
+
+
+1) Is React code working with NExt.js?
+
+2) What is Component?
+            (1) Class Base Component.
+            (2) Functional Base Component
+
+3) How to pass data in component?
+
+--------------> using (Props) and your choosing anytype character etc
+
+
+
+
+import Image from 'next/image'
+import styles from './page.module.css'
+
+export default function Home() {
+  return (
+    <main className={styles.main}>
+      <User name="Gaurav" />
+      <User name="sumit" />
+      <User name="bhagwan" />
+  <h1>Home Page</h1>
+    </main>
+  )
+}
+
+
+
+const User = (props) => {
+  return (
+    <div>
+      <h2>
+        User Name is {props.name}
+      </h2>
+    </div>
+  )
+}
+
+
+
+
+4) Different between Javascript and TypeScript?
+
+5) Server Side Scripting vs Client Side Scripting?

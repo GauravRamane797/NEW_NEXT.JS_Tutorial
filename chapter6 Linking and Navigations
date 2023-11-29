@@ -1,0 +1,82 @@
+##############  Linking and Navigations ######
+
+
+
+1) what is Linking and Navigation?
+                -> link (url)
+2) How to make links?
+3) How to navigate to another screen?
+4) interview Questions
+5) Task for you
+        - Two ways of navigating between routes
+        - Difference between link and navigation----->
+                link - <a href>
+                navigation - button,onclick etc
+
+
+
+
+using login and about folder creatiing both folder under the page.js to all code
+
+
+login page code
+
+const login = () => {
+    return (
+    <div>
+        <h1> login Page</h1>
+    </div>
+    )
+}
+export default login;
+
+
+
+
+about page code
+
+const about = () => {
+    return (
+    <div>
+        <h1> about Page</h1>
+    </div>
+    )
+}
+export default about;
+
+
+
+
+
+
+server page.js
+
+        "use client"
+import Link from 'next/link'
+import styles from './page.module.css'
+import { useRouter } from 'next/navigation'
+
+
+export default function Home() {
+const router = useRouter();
+const nevigate =(name)=>{
+  router.push(name)
+}
+  return (
+    <main>
+     <h1>
+      navigation and link
+     </h1>
+  
+   <button onClick={()=>router.push("/login")}>Go to Login Page </button>
+
+   <br />
+   <br />
+
+   <button onClick={()=>nevigate("/about")}>Go to About Page </button>
+    </main>
+  )
+}
+
+
+        

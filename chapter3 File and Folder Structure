@@ -1,0 +1,13 @@
+###### File and Folder Structure
+
+
+
+
+1) Important files for Beginners.
+2) Other file introduction.
+3) Code flow of next.js.
+4) Interview Questions.
+                (1) What is package.json?
+---> It is Storing project details, commands and librabries
+
+                (2) Difference between dependency and devdependency

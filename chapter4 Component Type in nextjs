@@ -1,0 +1,28 @@
+##########    Component Type in Next.js     #########
+
+
+(1)  Type of Component in next.js
+(2)  What is Server Component?
+(3)  What is Client Component?
+(4)  Where to use Server Component?
+(5)  Where to use Client Component?
+
+(6)  Interview Questions
+            (1)  Component Type based on rendering
+            (2)  Client component vs Server Component
+            (3)  Can use both Type of Component together
+
+
+
+ (2)  What is server component
+    -> Render on the Server Side
+    -> By default, All components are Server components.
+    -> They are closer to the Backend
+    -> So BE-related logic and code should write in Server Components.
+
+
+(3)  What is Client Component?
+    -> Render on the client Side
+    -> Can make client components with 
+    -> `use client` directive
+    -> All UI-related code and events should be written here.
