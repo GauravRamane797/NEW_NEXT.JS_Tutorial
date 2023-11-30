@@ -1,0 +1,48 @@
+############              Common Layout         ##########
+
+
+1) Make layout.js.
+2) Create a Navigation bar for login.
+3) Add a common style for Login.
+4) interview Question.
+        - How common layout works in Next.js
+        - Why user first letter capital in Link
+5) Task for you
+
+
+
+
+
+
+
+
+exmaple - 1
+import Link from "next/link";
+import "./login.css"
+export default function RootLayout({ children }) {
+    return (
+        <div>
+           <ul className="login-menu">
+            <li>
+                <h4> Login Navbar</h4>
+            </li>
+            <li>
+                <Link href="/login">Login</Link>
+            </li>
+            <li>
+                <Link href="/login/LoginStudent"> Student Login</Link>
+            </li>
+            <li>
+                <Link href="/login/LoginTeacher"> Teacher Login</Link>
+            </li>
+           </ul>
+            <br />
+            <br />
+            {
+                children
+            }
+            <br />
+            <br />
+        </div>
+    )
+}

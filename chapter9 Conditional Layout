@@ -1,0 +1,54 @@
+##############      Conditional Opertor     #########
+
+25- What is Conditional Layout?
+
+26- Get Route Name by the hook?
+
+27- Apply Condition with route name?
+
+28- Interview Question
+
+29- The task of you
+		- How to write conditions in JSX ?
+		- How to add Conditonal layout ?
+
+
+
+
+
+
+
+
+        "use client"
+        import Link from "next/link";
+        import "./login.css"
+        import { usePathname } from "next/navigation";
+        export default function RootLayout({ children }) {
+            const pathname = usePathname();
+            console.log(pathname);
+            return (
+                <div>
+                {
+                    pathname!=="/login/LoginTeacher"?
+                    <ul className="login-menu">
+                    <li>
+                        <h4> Login Navbar</h4>
+                    </li>
+                    <li>
+                        <Link href="/login">Login</Link>
+                    </li>
+                    <li>
+                        <Link href="/login/LoginStudent"> Student Login</Link>
+                    </li>
+                    <li>
+                        <Link href="/login/LoginTeacher"> Teacher Login</Link>
+                    </li>
+                </ul>
+                :null
+                }
+                    {children}
+                    <br />
+                    <br />
+                </div>
+            )
+        }

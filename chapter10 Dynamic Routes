@@ -1,0 +1,67 @@
+
+-----------------------------Dynamic Routes------------------------------
+
+
+30- What are Dynamic Routes
+
+31- Make a folder and file for the Dynamic route
+
+32- Write code and Navigation
+
+33- Get Dynamic Route name
+
+34- interview Question
+
+35- the task for you
+		- What is a dynamic Route?
+		- How to get dynamic Route name ?
+
+example 1
+studentlist -> page.js
+studentlist -> [student]
+[student]-> page.js
+
+import Link from "next/link"
+export default function () {
+    return (
+     <div>
+         <h1>
+             Student List
+             <ul>
+      <li>
+          <Link href="/studentlist/Anil">Anil</Link>
+      </li>
+      <li>
+          <Link href="/studentlist/Gaurav">Gaurav</Link>
+      </li>
+      <li>
+          <Link href="/studentlist/Sumit">Sumit</Link>
+      </li>
+      <li>
+          <Link href="/studentlist/Bhagwan">Bhagwan</Link>
+      </li>
+      <li>
+          <Link href="/studentlist/Patil">Patil</Link>
+      </li>
+             </ul>
+         </h1>
+     </div>
+    )
+}
+
+
+
+
+
+"use client"
+export default function ({params}) {
+    console.log(params)
+    return (
+        <div>
+           <h1>Student Details</h1>
+           <br/>
+           <br/>
+           <h4>Name: {params.student}</h4>
+        </div>
+    )
+}

@@ -1,0 +1,41 @@
+-------------------Catch-all Segments of Route-------------------------------
+
+
+
+36- What are the Segments of the Route?
+37- how to get all segements of Route?
+38- interview Question
+39- the task for you
+			- Get Route name from url ?
+			- How to get all segments of Route?
+
+
+example 1 
+
+        folder create in src/app ---> app
+        app -> study -> page.js
+
+export default function study (){
+    return (
+        <div>
+            <h2>All Lecture of College</h2>
+        </div>
+    )
+}
+
+
+        study-> [...lecture]
+        [...lecture]-> page.js
+
+
+
+"use client"
+export default function Lecture (params){
+    console.log(params);
+    return (
+        <div>
+            <h2> Lecutre 1 of College</h2>
+        </div>
+    )
+}
+
