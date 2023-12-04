@@ -1,0 +1,19 @@
+###### Font Optimization ##########
+
+1) why use next.js font?
+2) How to use a normal font?
+3) How to use Next.js font?
+4) Interview Question
+        - Why use next.js Font? 
+
+
+        app -----> page.js
+
+
+        export default function Home(){
+                return(
+                        <main>
+                        <h1>Font Optimization in Next <h1></main>
+                        <h1 style={{fontFamily:'Roboto',fontWeight:100}}>Font With Link tag in next js <h1></main>
+                )
+        }

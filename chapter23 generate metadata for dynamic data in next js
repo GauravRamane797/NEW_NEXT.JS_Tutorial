@@ -1,0 +1,30 @@
+########## generateMetadata for Dynamic meta   #######
+
+1) What is Dynamic meta Data?
+2) What is the use of generateMetadata?
+3) How to use of generateMetadata?
+4) Wrong way to use meta data>
+5) Use generateMetadatawith multiple route
+6) interview Questions
+        - How to use dynamic title tag in next.j?
+
+
+        app ---> user ---> page.js
+        
+
+
+        
+export default function page(){
+    return(
+      <div>
+        <h1>User page</h1>
+      </div>
+    )
+}
+
+export  function genrateMetadata({params}){
+    return{
+        title: 'user page title',
+        description: "user page desrcption"
+    }
+}

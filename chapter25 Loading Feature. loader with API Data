@@ -1,0 +1,51 @@
+########  Loader in Nex.Js   ##########
+
+
+1) Why do we need a Loaderin next.Js?
+2) call API?
+3) Render Data of API on screen?
+4) Make loading screen
+5) check Loader
+6) interview Question
+            - How to Makea loader in Next.Js?
+            - How to add loading screen in Next.Js?
+
+
+
+---> src/app --> users --> page.js
+
+
+            async function userList(){
+    let data = await fetch("https://dummyjson.com/users");
+    data = await data.json();
+    return data.users;
+}
+
+export default async function page(){
+    let users = await userList();
+    console.log(users)
+    return(
+      <div>
+        <h1>Users Name List </h1>
+        {
+users.map((item)=>(
+    <div><h2>User Name: {item.firstName}</h2></div>
+))
+        }
+      </div>
+    )
+}
+
+
+
+
+---> src/app --> users --> loading.js
+
+export default function Page(){
+    return (
+        <div className="loader-line">
+
+            <h1>Loading User List...</h1>
+        </div>
+    )
+}

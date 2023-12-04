@@ -1,0 +1,62 @@
+############## Image optimization   ###############
+
+1) why use image Component of next.js
+2) import and use image
+3) use html img tag
+4) config for image from other domain
+5) interview question
+            - How to optimize image in next.js
+            - Different between next.js image and html image
+            - How to use public folder images
+            - config for external Image URL
+
+app---> style.module.css
+
+.red{
+    color:red;
+}
+.green{
+    color:darkgoldenrod;
+}
+.orange{
+    color: brown;
+}
+
+
+
+
+---> page.js
+
+
+import Image from "next/image"
+import Profile from '../../public/vercel.svg'
+export default function Home() {
+console.log(Profile)
+  return (
+   <main>
+    <h1>
+      Image Optimization in next</h1> 
+      {/* <image src= {Profile} /> */}
+      <Image 
+      src="https://kinsta.com/wp-content/uploads/2020/08/tiger-jpg.jpg"
+        height= {200}
+        width= {200} 
+        />
+      </main>
+  )
+}
+
+
+
+--> style.config.css
+
+
+
+            /** @type {import('next').NextConfig} */
+const nextConfig = {
+    images:{
+        domains:["kinsta.com"]
+    }
+}
+
+module.exports = nextConfig
