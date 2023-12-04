@@ -1,0 +1,24 @@
+############ css with next.js #########
+
+
+1) Global css
+            app--> layout.js ---> import './globals.css'
+            import './user/style.css';
+
+            app ---> globals.css
+            h2 {
+                color:chocolate
+            }
+
+            app --> user ---> style.css
+            h1 {
+                color:red
+            }
+
+
+2) Inline CSS 
+3) Update Style with a button
+4) Interview Question
+            - Can write style tag in next.js
+            - Update style with useState
+

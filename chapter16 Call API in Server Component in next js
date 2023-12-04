@@ -1,0 +1,44 @@
+-----------------------Call API in Server component in next.js---------------------------
+
+
+Note 1 : ---> Do not use "use client", useState, useEffect, hooks 
+
+Note 2 : ---> Do not use onclick() function because he got it error through
+
+Note 3: ---> You can only access button keys only
+
+
+66- Create Server components for Products?
+
+67- Make a Function for call API?
+
+server component
+app-->productlist-->page.js
+            async function productlist(){
+            let data = await fetch("https://dummyjson.com/products");
+            data = await data.json();
+            return data.products
+            }
+
+            export default async function Page() {
+            let products = await productlist();
+            console.log(products);
+                return (
+                    <div>
+                        <h1>Product List</h1>
+                    {
+                        products.map((item)=>(
+                            <h3>Name: {item.title}</h3>
+                        ))
+                    }
+                    </div>
+                )
+            }
+
+68- Call API
+
+69- Render Data
+
+70- Interview Question
+			- What is the Server Component in next.js?
+			- How do call API in Server Components?

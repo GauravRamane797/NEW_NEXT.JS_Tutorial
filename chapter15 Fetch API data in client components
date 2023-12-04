@@ -1,0 +1,50 @@
+-----------------------------Fetch API data in Client component in next.js -----------------
+
+61- Create Product Components?
+
+
+            app -> productlist -> page.js
+            
+
+
+
+            "use client"
+            import { useEffect,useState } from 'react'
+
+            export default function Page() {
+                const [product,setProduct] = useState([])
+                useEffect(async ()=>{
+                    let data = await fetch("https://dummyjson.com/products");
+                    data = await data.json();
+                    
+                    setProduct(data.product)
+                }, [])
+
+                return (
+                    <div>
+                        <h1>
+                            Product List
+                        </h1>
+                        {
+                            product.map((item)=>(
+                        <h3>
+                        Name:  +-
+                        {item.title}
+                        </h3>
+                        ))
+                        }
+                    </div>
+                )
+            }
+
+62- Make it client component?
+
+63- Add hooks
+
+64- How to call API
+
+65- Render Data?
+
+    - What is client component in Next.js?
+    - How to make client components?
+    - Fetch data in client components?

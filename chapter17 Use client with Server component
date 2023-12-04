@@ -1,0 +1,67 @@
+------------------------ Use client Component with Server Component in next.js-----------
+
+Client Component With Server Component
+
+71- Why do we need a Client Component inside Server Component?
+
+72- Make Component?
+
+
+import Product from "./product";
+
+
+async function productlist(){
+  let data = await fetch("https://dummyjson.com/products");
+  data = await data.json();
+  return data.products
+  }
+
+  export default async function Page() {
+  let products = await productlist();
+  console.log(products);
+      return (
+          <div>
+              <h1>Product List</h1>
+          {
+              products.map((item)=>(
+                  <h3>Name: {item.title}</h3>
+              ))
+              <Product />
+          }
+          </div>
+      )
+  }
+
+
+
+
+
+
+
+
+
+"use client"
+export default function Product(price) {
+    return (
+        <div>
+            <button onClick={()=> alert(price)}>check here</button>
+            </div>
+            )}
+
+
+
+
+
+
+
+
+
+
+
+73- Pass data in components
+
+74- Add Events
+
+75- inerview Questions
+		-How to Perform Events with Server Component
+		- Pass data between component. 

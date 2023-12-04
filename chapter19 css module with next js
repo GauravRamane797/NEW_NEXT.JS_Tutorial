@@ -1,0 +1,22 @@
+###########      CSS Modules with next.js    ################
+
+1) How this is different from normal CSS.
+2) Make a Modular css file.
+3) Apply CSS Modules.
+4) Multiple CSS module.
+5) interview Question
+            - What is CSS Module?
+            - How module CSS id different from normal css?
+            - how to use module CSS?
+
+
+
+
+
+            import s from "./Example.module.css";
+
+const Example = ({ children }) => {
+  return <p className={s.root}>{children}</p>;
+};
+
+export default Example;
