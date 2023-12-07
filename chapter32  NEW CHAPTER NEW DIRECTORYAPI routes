@@ -1,0 +1,27 @@
+###### NEW CHAPTER NEW DIRECTORY NEW APP CREATE AND GET API ######
+
+##### API Routes ##########
+1) Use Of API Routes ?
+2) Make API Route.
+3) Test it with Postman?
+4) Interview Question?
+        - Make to Make API Route with Next.js?
+        - Use of API Route In next js?
+        - How to get API ?
+        - How to delete API ?
+        
+-----> src ---> app ----> hello---> route.js
+
+
+export async function GET(request){
+    return new Response('hello, Next.js!')
+}
+
+
+
+-----> src ---> app ----> users ---> route.js
+
+import { NextResponse } from "next/server"
+export async function GET(request){
+    return NextResponse.json({name:"Anil", age: 28, city:"kolhapur"})
+}

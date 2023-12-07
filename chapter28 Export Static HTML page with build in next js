@@ -1,0 +1,59 @@
+######## export Static HTML Page with Build  ##########
+
+1) What is Static HTML means?
+2) Make Some Pages
+3) Add Configuration
+4) Run build command
+5) Check HTML and Try to run it
+
+
+
+---> app --> products ---> page.js
+
+
+
+export default function page(){
+    return(
+      <div>
+        <h1>Product page</h1>
+      </div>
+    )
+}
+
+
+
+
+
+
+
+
+---> app --> seller ----> page.js
+
+
+
+
+export default function page(){
+    return(
+      <div>
+        <h1>component page</h1>
+      </div>
+    )
+}
+
+
+
+
+
+
+---> src ---> components---> user.js
+
+
+
+
+export default function page(){
+    return(
+      <div>
+        <h1>component page</h1>
+      </div>
+    )
+}

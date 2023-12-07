@@ -1,0 +1,25 @@
+##########   Redirection in Next.js ###############
+
+1) What is Redirection?
+2) Redirect from component?
+3) Redirect from Config file.
+4) Dynamic URL redirect
+
+            - How many ways we have to Redirect?
+            - How to redirect dynamic redirection with config file?
+
+            import {redirect} from "next/navigation"
+
+
+----> app ----> redirect ---> page.js
+
+
+
+export default function  Page (){
+    redirect("/")
+    return(
+        <div>
+            <h1>User Page</h1>
+        </div>
+    )
+    }

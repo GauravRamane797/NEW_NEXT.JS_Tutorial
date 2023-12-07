@@ -1,0 +1,117 @@
+###### GET API with STATIC DATA  ######
+
+1) API for user detail and user list.
+2) Make a static db file.
+3) Make user list API
+4) Make a route for single-user API.
+5) Get request params
+6) Filter result and test API
+7) Interview Questions?
+
+        - How to make API with next.js API routes?
+        - API for single result?
+        - get params from URL in next js API route?
+        - Filter result from array?
+
+
+        ---> src -->app --> hello ---> route.js
+
+
+export async function GET(request){
+    return new Response('hello, Next.js!')
+}
+
+
+
+
+
+
+
+        ---> src --> util --> db.js
+
+
+export const user = [
+    {   id:20,
+        name: "anil",
+        age: 24,
+        email: "anil24@gmail.com"
+    },
+    {   id:24,   
+        name: "sumit",
+        age: 22,
+        email: "sumit22@gmail.com"
+    },
+    {   id:22,
+        name: "bhagwan",
+        age: 21,
+        email: "bhagwan@gmail.com"
+    },
+    {   id:21,
+        name: "sajay",
+        age: 25,
+        email: "sanjay25@gmail.com"
+    },
+    {   id:27,
+        name: "akash",
+        age: 26,
+        email: "akash26@gmail.com"
+    },
+    {   id:23,
+        name: "sourabh",
+        age: 28,
+        email: "sourabh28@gmail.com"
+    }
+
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ---> src -->app --> users ---> route.js
+
+
+        import {user} from "@/util/db";
+import { NextResponse } from "next/server";
+export async function GET(request){
+    const data = user;
+    return NextResponse.json(data,{status:200})
+}
+
+
+
+
+
+
+        
+        
+        
+        
+        
+        ---> src -->app --> api ---> [Id]--->route.js
+
+
+        import { user } from "@/util/db";
+import { NextResponse } from "next/server";
+
+export async function GET(request, content) {
+
+    const userData = user.filter((item) => item.id == content.params.id)
+    console.log(userData);
+    return NextResponse.json(userData.length==0? {result:"no data found",success:false}:{result:userData,success:true}, 
+    { status: 200 })
+}

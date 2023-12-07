@@ -1,0 +1,77 @@
+##########      Static Site Generation (SSG)   ########
+
+1) What is SSG?
+2) Make a service file and Call API
+3) Display data from API
+4) Make Dynamic Routing?
+5) Make build with SSG?
+
+
+            - What is SSG?
+            - How to call API?
+            - How to make SSG Build?
+            - Use of generateStaticParams
+
+
+          main folder---> services  ---> getUsers.js
+
+
+          export default async function getUsers()
+{const result = await fetch ("https://jsonplaceholder.typicode.com/users");
+
+return  result.json();
+}
+
+            ---- src --- app --> userss--> pages.js
+
+import Link from "next/link";
+import getUsers from "../../../sevice/getUsers"
+
+export default async function Page() {
+    const getUserList = getUsers();
+    const users = await getUserList;
+    console.log(users)
+    return (
+        <div>
+            <h1>User List</h1>
+            {
+                users.map((user) => (
+                    <h2 key={user.id}>
+                        <Link href={`/users/'+ ${user.id}`}>{user.name}</Link>
+                    </h2>
+
+                ))
+            }
+        </div>
+    )
+}
+
+
+
+            ---> src ---> app --> userss ---> [userid]---> page.js
+
+           
+import getUsers from "../../../sevice/getUsers"
+
+export default async function Page() {
+    const getUserList = getUsers();
+    const users = await getUserList;
+    const currentId =props.params.userId
+    console.log(users[currentId-1])
+    return (
+        <div>
+            <h1>User Details List</h1>
+            <h4>ID: {userData.id}</h4>
+            <h4>NAME: {userData.name}</h4>
+            <h4>WEBSITE: {userData.website}</h4>
+        </div>
+    )
+}
+
+export default async function Page() {
+    const getUserList = getUsers();
+    const users = await getUserList;
+    return users.map(()=>{
+        userid:users.id.toString()
+    });
+}

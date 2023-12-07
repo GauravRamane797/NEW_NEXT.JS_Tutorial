@@ -1,0 +1,64 @@
+#############   Environnment variables   ##########
+
+1) What are Environnment variables?
+2) How to Access Environnment variables?
+3) Use Environnment variables?
+4) Interview Questions?
+            - How to use different Configurations in different Build?
+            - What are Environment variables?
+
+
+
+
+       --- Devlopement Mode and Production Mode---
+
+
+
+       ---> src --> app --> page.js -->
+
+
+export default function Home(){
+       console.log(process.env.NODE_ENV)
+       return(
+        <main>
+        {
+            process.env.NODE_ENV == "development"?
+            <h1>You are on development Mode </h1>
+            :
+            <h1> Environment Variables in Next js</h1>
+        }
+        </main>
+       )
+}
+
+       or
+
+
+
+
+
+       example 2)
+
+
+
+export default function Home(){
+       console.log(process.env.NODE_ENV)
+       return(
+        <main>
+        {
+            process.env.NODE_ENV == "development"?
+            <h1>You are on development Mode </h1>
+            :
+            <h1> Environment Variables in Next js</h1>
+        }
+        {API_BASE_URL}
+        </main>
+       )
+}
+
+using ---> this constants.js
+
+---> src ---> config ---> constants.js
+
+
+export const API_BASE_URL = process.env.NODE_ENV =="development" ? "www.api.dev.example.com" : "www.api.prod.example.com"
