@@ -1,0 +1,34 @@
+####### Write Post API   #######
+
+
+1) Make Post API function
+2) Write API response.
+3) Get request params.
+4) Apply validation checks
+5) Test Post with Postman
+6) interview question
+        - Make Post API route
+        - Get the request body in the post API request
+
+using PUT api response
+
+
+
+
+        ----> src  --> app ---> api ---> users ---> route.js
+
+        import {user} from "@/util/db";
+import { NextResponse } from "next/server";
+
+export async function GET(){
+    const data = user;
+    return NextResponse.json(data,{status:200})
+}
+export async function POST(request){
+    let payload = await request.json();
+    console.log(payload.name);
+    if(!payload.name || !payload.age || !payload.email){
+        return NextResponse.json({result:"require field not found"})
+    }
+    return NextResponse.json({request:"hello"})
+}
