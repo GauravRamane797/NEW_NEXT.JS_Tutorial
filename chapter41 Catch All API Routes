@@ -1,0 +1,24 @@
+###### Catch All API Routes #######
+
+
+1) What does mean by catch-all routes?
+2) Make Route.
+3) Write code for catch-all Route API
+4) Test API
+
+
+
+
+src---> app ---> api ---> [...student] ---> student.js
+
+
+
+
+
+import { NextResponse } from "next/server";
+
+export async function GET(request, content) {
+    const studentDetails = content.params.student;
+    console.log(studentDetails);
+    return NextResponse.json({ result: studentDetails }, { status: 200 })
+}

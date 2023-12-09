@@ -1,34 +1,44 @@
-####### Write Post API   #######
+######## Make Delete API   #######
+
+1) Make API Route function
+2) Get Id from URL
+3) write Code fro delete API
+4) Test API with postman
+
+---> src ---> app --> users --> [id]  --> route.js
 
 
-1) Make Post API function
-2) Write API response.
-3) Get request params.
-4) Apply validation checks
-5) Test Post with Postman
-6) interview question
-        - Make Post API route
-        - Get the request body in the post API request
-
-using PUT api response
-
-
-
-
-        ----> src  --> app ---> api ---> users ---> route.js
-
-        import {user} from "@/util/db";
+import { user } from "@/util/db";
 import { NextResponse } from "next/server";
 
-export async function GET(){
-    const data = user;
-    return NextResponse.json(data,{status:200})
+export async function GET(request, content) {
+
+    const userData = user.filter((item) => item.id == content.params.id)
+    return NextResponse.json(
+        userData.length == 0 ? { result: "no data found", success: false } : { result: userData[0], success: true },
+        { status: 200 })
 }
-export async function POST(request){
+
+
+export async function PUT(request, content) {
     let payload = await request.json();
-    console.log(payload.name);
-    if(!payload.name || !payload.age || !payload.email){
-        return NextResponse.json({result:"require field not found"})
+
+    payload.id = content.params.id
+    console.log(payload);
+    if (!payload.name || !payload.age || !payload.email) {
+        return NextResponse.json({ result: "require field not found", success: false },{status: 300})
     }
-    return NextResponse.json({request:"hello"})
+
+    return NextResponse.json({ result: payload, success: true}, {status: 200});
+
+}
+
+export function DELETE (request, content){
+    let id = content.params.id
+    if (id){
+        return NextResponse.json({result: "user deleted", success:true},{status:200})
+    }else{
+        return NextResponse.json({result: "Internal error, Please try after sometime" ,success:false},{status:400})
+
+    }
 }

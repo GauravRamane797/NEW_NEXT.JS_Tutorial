@@ -1,0 +1,74 @@
+####### Integrate Delete API #####
+
+1) Make a Component for Delete User.
+2) Why need Delete Component 
+3) Call Delete Component
+4) test API with UI.
+
+
+Note : -> client compoenent madhe asynce or await cha use hot nahi tasech server component madhe input,onclick etc event use hot nahit tyasathi vegala component create kela jatoo ekach veli donhi goshti possible nhiyet tyasathi tr vegala component use kela jato ani tyala client component banavava lagato
+
+
+
+
+
+---> src --> app--> users --> page.js
+
+
+
+import Link from "next/link";
+import './../style.css'
+import DeleteUser from "@/util/DeleteUser";
+async function getUsers() {
+    let data = await fetch("http://localhost:3003/api/users")
+    data = await data.json();
+    return data;
+}
+export default async function Page(params) {
+    const users = await getUsers();
+    console.log(users)
+    return (
+        <div>
+            <h2>User List</h2>
+            {
+                users.map((item) =>
+                    <div className="user-item">
+
+                        <span><Link href={`users/${item.id}`}>{item.name}</Link></span>
+
+                        <span><Link href={`users/${item.id}/update`}>Edit</Link></span>
+
+                        <DeleteUser id={item.id} />
+
+                    </div>
+                )
+            }
+        </div>
+    )
+}
+
+
+
+
+
+util--> DeleteUser.js
+
+
+
+               "use client"
+export default function DeleteUser(props) {
+    const userId = props.id;
+    console.log(userId)
+    const deleteuser = async()=>{
+        let result = await fetch ("http://localhost:3003/api/users/"+userId,
+        {method: "delete"
+    });
+        result= await result.json();
+        if(result.success){
+            alert("User is Deleted")
+        }
+
+    }
+    return (<button onClick={deleteuser}>Delete</button>)
+}
+
