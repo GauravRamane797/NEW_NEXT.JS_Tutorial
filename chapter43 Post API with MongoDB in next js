@@ -1,0 +1,7 @@
+###### Save Data in DB with Post API  ########
+
+1) Make Function for Post API.
+2) Write code for saving Data
+3) Get data from API Request 
+4) Save Product data in MongoDB
+5) Test API with postman

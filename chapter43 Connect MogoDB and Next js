@@ -1,0 +1,71 @@
+#######  Connect MongoDB and Next js ########
+
+1) Make an env file and username and password
+2) Make DB connection
+3) Make Schema for collection
+4) get data from MongoDB to next js
+5) Make sample API with DB data
+
+
+src--> util--> .env.local
+
+
+username=gauravramane797
+password=gaurav797
+
+
+
+
+
+
+src--> library --> db.js
+
+
+const {username,password}=process.env
+export const connectionSrt="mongodb+srv://"+username+":"+password+"@cluster0.tehsnho.mongodb.net/productDB?retryWrites=true&w=majority";
+
+
+
+
+
+
+src--> app--> api --> product --> route.js
+
+
+import { connectionSrt } from "../../library/db";;
+import mongoose from "mongoose"
+import {Product} from "@/library/Schema/product"
+import { NextResponse } from "next/server";
+
+export async function GET(){
+
+
+   await mongoose.connect(connectionSrt)
+    const data = Product.find();
+    console.log(data)
+
+
+    return NextResponse.json({result:data})
+}
+
+
+
+
+
+
+
+
+
+
+src-->library --> Schema--> product.js
+
+
+import mongoose from "mangoose";
+
+const productModel = new mongoose.Schema({
+    Brand: String,
+    Price: num,
+    storage: String,
+    Company: String
+});
+export const Product = mongoose.models.product || mongoose.model("products", productModel)
