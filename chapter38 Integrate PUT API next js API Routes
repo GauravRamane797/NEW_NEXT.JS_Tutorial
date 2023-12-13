@@ -8,31 +8,73 @@
 
 
 
-----> src --> api ---> users ---> [id] --> page.js
 
 
+src--> app --> style.success
 
-import { user } from "@/util/db";
-import { NextResponse } from "next/server";
-
-export async function GET(request, content) {
-
-    const userData = user.filter((item) => item.id == content.params.id)
-    return NextResponse.json(
-        userData.length == 0 ? { result: "no data found", success: false } : { result: userData[0], success: true },
-        { status: 200 })
+.user-item span{
+    display: inline-block;
+    width: 100px;
 }
 
 
-export async function PUT(request, content) {
-    let payload = await request.json();
 
-    payload.id = content.params.id
-    console.log(payload);
-    if (!payload.name || !payload.age || !payload.email) {
-        return NextResponse.json({ result: "require field not found", success: false },{status: 300})
-    }
 
-    return NextResponse.json({ result: payload, success: true}, {status: 200});
 
+
+
+
+
+----> src --> api ---> users  ---> [userid]--->update --> page.js
+
+
+
+"use client"
+import { useEffect, useState } from 'react'
+import "./../../../style.css"
+
+export default function Page({params}) {
+    let id = params.userid
+    const [name, setName] = useState("");
+    const [age, setAge] = useState("");
+    const [email, setEmail] = useState("");
+   
+useEffect(()=>{
+    getUserDetails()
+},[])
+
+const getUserDetails=async ()=>{
+let data = await fetch ("http://localhost:3000/api/users/"+id)
+data = await data.json();
+setName(data.result.name);
+setAge(data.result.age);
+setEmail(data.result.email);
+}
+const updateUser=async()=>{
+    let result = await fetch ("http://localhost:3000/api/users/"+id, {
+        method: "PUT",
+        body:JSON.stringify({name,age,email})
+    });
+result = await result.json()
+console.log(result)
+if(result.success){
+    alert("User information Update")
+    console.log("User information Update")
+}else{
+    alert("Please try with valid input")
+}
+}
+
+
+    return (
+        <div className="add-user">
+            <h1>Update User Details</h1>
+            <input type="text" placeholder="Enter Name" className="input-field" value={name} onChange={(event) => setName(event.target.value)} />
+            <input type="text" placeholder="Enter Age" className="input-field" value={age} onChange={(event) => setAge(event.target.value)} />
+            <input type="text" placeholder="Enter Email" className="input-field" value={email} onChange={(event) => setEmail(event.target.value)} />
+            
+
+            <button className="btn"onClick={updateUser}>Update User</button>
+        </div>
+    )
 }

@@ -16,31 +16,61 @@ import { useState } from 'react'
 import "./../style.css"
 
 export default function Page() {
+    const [id, setID] = useState("");
     const [name, setName] = useState("");
     const [age, setAge] = useState("");
     const [email, setEmail] = useState("");
     const addUser = async () => {
-        let response = await fetch("http://localhost:3003/api/users", {
+        let response = await fetch("http://localhost:3000/api/users", {
             method: "Post",
-            body: JSON.stringify({ name, age, email })
+            body: JSON.stringify({name,age,email,id})
         });
 
         response = await response.json();
-        if (response.success) {
-            alert("new user added")
-        } else {
-            alert("some error with data please check and try again ")
-        }
+       if (response.success){
+        alert("new user added")
+       }else{
+        alert("some error with data please check and try again")
+       }
         console.log(response);
     }
     return (
-        <div className="adduser">
+        <div className="add-user">
             <h1>Add new User</h1>
             <input type="text" placeholder="Enter Name" className="input-field" value={name} onChange={(event) => setName(event.target.value)} />
             <input type="text" placeholder="Enter Age" className="input-field" value={age} onChange={(event) => setAge(event.target.value)} />
             <input type="text" placeholder="Enter Email" className="input-field" value={email} onChange={(event) => setEmail(event.target.value)} />
+            <input type="text" placeholder="Enter Id" className="input-field" value={id} onChange={(event) => setID(event.target.value)} />
 
             <button className="btn" onClick={addUser}>Add user</button>
         </div>
     )
+}
+
+src --> app ---> Style.css
+
+
+.input-field{
+    display:Block;
+    margin:10px;
+    height: 30px;
+    width:300px
+
+}
+
+
+.btn{
+    background-color:skyblue;
+    color:white;
+    border:0;
+    width:300px;
+    margin:10px;
+    padding:10px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.add-user{
+    margin-top: 100px;
+    text-align: -webkit-center;
 }

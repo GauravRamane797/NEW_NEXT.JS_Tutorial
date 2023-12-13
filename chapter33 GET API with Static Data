@@ -84,7 +84,7 @@ export async function GET(request){
         
         
         
-        ---> src -->app --> api ---> [Id]--->route.js
+        ---> src -->app --> api ---> [id]--->route.js
 
 
         import { user } from "@/util/db";
