@@ -1,0 +1,104 @@
+
+#######   Integrated Post API with mangoDB  ########
+
+1) Make Link and Page to add the Product
+2) Make Input fields for adding Products.
+3) Use state to get input field data.
+4) Call API to add product.
+5) Test API and data din MongoDB collection.
+
+
+
+---> src --> app ---> addproduct --> page.js
+
+
+"use client"
+
+import {useState} from "react"
+
+import"../style.css"
+
+export default function Page(){
+
+    const [name, setName] = useState("");
+    const [age, setAge] = useState("");
+    const [email, setEmail] = useState("");
+    const [id, setid] = useState("");
+
+//    state q declare karate hai q ki sabaki value state me get() karane ke liye our usake bad me state ki help se unaki value kp api ke andar send karvane ke liye
+
+
+
+
+
+
+
+    const addproduct=async ()=>{
+        console.log(name,age,email,id);
+        let result =await fetch ("http://localhost:3000/api/products",{
+            method:"POST",
+            body:JSON.stringify({name,age,email,id})
+        });
+        result = await result.json();
+        if (result.success){
+            alert("New Product Added")
+        }
+    }
+    return (
+        <div>
+            <h1>
+                Add Product
+            </h1>
+            <input className="input" type="text" placeholder="Enter Student Name"   value={name}  onChange={(e)=>setName(e.target.value)}/>
+            <input className="input" type="text" placeholder="Enter Student Age"  value={age}  onChange={(e)=>setAge(e.target.value)}/>
+            <input className="input" type="text" placeholder="Enter Student Email"  value={email}  onChange={(e)=>setEmail(e.target.value)}/>
+            <input className="input" type="text" placeholder="Enter Student Id"  value={id}  onChange={(e)=>setid(e.target.value)}/>
+        <button className="bttn" onClick={addproduct}>Add Product</button>
+        </div>
+    )
+}
+
+
+
+
+
+---> src ---> app --> adduser---> page.js
+
+
+"use client"
+import { useState } from 'react'
+import "./../style.css"
+
+export default function Page() {
+    const [id, setID] = useState("");
+    const [name, setName] = useState("");
+    const [age, setAge] = useState("");
+    const [email, setEmail] = useState("");
+    const addUser = async () => {
+        let response = await fetch("http://localhost:3000/api/users", {
+            method: "Post",
+            body: JSON.stringify({name,age,email,id})
+        });
+
+        response = await response.json();
+       if (response.success){
+        alert("new user added")
+       }else{
+        alert("some error with data please check and try again")
+       }
+        console.log(response);
+    }
+    return (
+        <div className="add-user">
+            <h1>Add new User</h1>
+            <input type="text" placeholder="Enter Name" className="input-field" value={name} onChange={(event) => setName(event.target.value)} />
+            <input type="text" placeholder="Enter Age" className="input-field" value={age} onChange={(event) => setAge(event.target.value)} />
+            <input type="text" placeholder="Enter Email" className="input-field" value={email} onChange={(event) => setEmail(event.target.value)} />
+            <input type="text" placeholder="Enter Id" className="input-field" value={id} onChange={(event) => setID(event.target.value)} />
+
+            <button className="btn" onClick={addUser}>Add user</button>
+        </div>
+    )
+}
+
+

@@ -1,0 +1,155 @@
+###### Populate Form data with API    ######
+
+1) Make API to get a single record
+2) Make Route for editing the product
+3) Add input fields for edit product
+4) Declare state for adding values in input fields 
+5) Call API and display data
+6) Test API with Postman
+
+
+
+
+
+
+---> src ---> app ---> products --> [editproduct] --> Page.js
+
+"use client"
+
+import { useEffect, useState } from "react"
+
+import "../../style.css"
+import { Asul } from "next/font/google";
+import Link from "next/link";
+
+export default function Page(props) {
+
+    const [name, setName] = useState("");
+    const [age, setAge] = useState("");
+    const [email, setEmail] = useState("");
+    const [id, setid] = useState("");
+
+    useEffect(() => {
+        getProductsDetails();
+    }, []);
+
+    const getProductsDetails = async () => {
+        let productId = props.params.editproduct
+        let ProductData = await fetch("http://localhost:3000/api/products/" + productId)
+        ProductData = await ProductData.json();
+        if (ProductData.success) {
+            let result = ProductData.result;
+            setName(result.name);
+            setAge(result.age)
+            setEmail(result.email)
+            setid(result.id)
+
+        }
+
+    }
+
+    const updateProduct = async () => {
+        let productId = props.params.editproduct
+        let data = await fetch("http://localhost:3000/api/products/" + productId,
+            {
+                method: "PUT",
+                body: JSON.stringify({ name, age, email, id })
+            });
+        data = await data.json();
+        if (data.result) {
+            alert("product has been Updated")
+        }
+    }
+        return (
+            <div>
+                <h1>
+                    Update Student
+                </h1>
+                <input className="input" type="text" placeholder="Enter Student Name" value={name} onChange={(e) => setName(e.target.value)} />
+                <input className="input" type="text" placeholder="Enter Student Age" value={age} onChange={(e) => setAge(e.target.value)} />
+                <input className="input" type="text" placeholder="Enter Student Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <input className="input" type="text" placeholder="Enter Student Id" value={id} onChange={(e) => setid(e.target.value)} />
+
+
+                <button className="bttn" onClick={updateProduct}>Update Student</button>
+                <Link href={"/products"}>Go to Student Page</Link>
+            </div>
+        )
+    }
+
+
+--> src ---> product --> page.js
+
+
+// const getProducts = async () => {
+
+import DeleteProduct from "@/lib/DeleteStudent";
+import Link from "next/link";
+
+//         let data = await fetch("http://localhost:3000/api/products");
+//         const response = await data.json();
+//         console.log("fetch data response",response);
+//         if (response.success) {
+//             return response.result;
+//         } else {
+//             return { success: false }
+//         }
+// } 
+
+const getProducts = async () => {
+        let data = await fetch("http://localhost:3000/api/products",{cache:"no-cache"});
+       data = await data.json();
+
+        console.log("fetch data data", data);
+
+        if (data.success) {
+            return data.result || []; // Check if result is defined, otherwise return an empty array;
+        } else {
+            console.error("API request failed:", data.error);
+            return []; // or handle the error accordingly
+        }
+
+}
+
+
+
+export default async function Page() {
+   
+        const products = await getProducts();
+        console.log("products data", products);
+
+        return (
+            <div>
+                <h1>
+                    Student List
+                </h1>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Age</td>
+                            <td>Email</td>
+                            <td>Id</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            products.map((item) => (
+                                <tr key={item.id}>
+                                    <td>{item.name}</td>
+                                    <td>{item.age}</td>
+                                    <td>{item.email}</td>
+                                    <td>{item.id}</td>
+                                    <td><Link href={"products/"+item._id}>Edit</Link>
+                                    <DeleteProduct id = {item.id} />
+                                    </td>
+                                </tr>
+                            ))
+                        }
+                    </tbody>
+                </table>
+            </div>
+        )
+    } 
+
+

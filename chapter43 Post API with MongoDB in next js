@@ -4,4 +4,63 @@
 2) Write code for saving Data
 3) Get data from API Request 
 4) Save Product data in MongoDB
-5) Test API with postman
+5) Test API with postman 
+
+src ---> app --> api ---> products --> route.js
+
+
+import { connectionSrt } from "@/lib/db";
+import mongoose from "mongoose";
+import { Product } from "@/lib/Schema/product";
+import { NextResponse } from "next/server";
+
+export async function GET() {
+
+
+    //    await mongoose.connect(connectionSrt)
+    //     const data = Product.find();
+    //     console.log(data)
+
+    // 2nd type of part data fetch connectionSrt to result data collect
+    let data = []
+    try {
+        await mongoose.connect(connectionSrt)
+        const data = Product.find();
+    } catch (error) {
+        data = { success: false }
+    }
+    return NextResponse.json({ data })
+
+
+    //     return NextResponse.json({result:data})
+}
+
+
+export async function POST(request) {
+    const payload = await request.json();
+    await mongoose.connect(connectionSrt);
+    const product = new Product({ payload })
+    const result = await product.save();
+    return NextResponse.json({ result, success: true })
+}
+
+
+
+
+
+
+
+
+
+----> src---> lib ---> schema --> product.js
+
+
+import mongoose from "mongoose";
+
+const productModel = new mongoose.Schema({
+    Brand: String,
+    Price: String,
+    storage: String,
+    Company: String
+});
+export const Product = mongoose.models.product || mongoose.model("products", productModel)

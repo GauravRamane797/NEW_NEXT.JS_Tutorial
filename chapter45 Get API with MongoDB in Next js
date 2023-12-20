@@ -1,0 +1,103 @@
+###### Product List with mongoDB  #######
+
+
+1) Make Link and Page for the product list
+2) Re-create Product list API
+3) Get product on API with API
+4) Display product List
+
+
+--> src --> app --> products ---> page.js
+
+
+const getProducts = async () => {
+    let data = await fetct("http://localhost:3000/api/products")
+    data = await data.json();
+    if (data.success) {
+        return data.result;
+    } else {
+        return { success: false }
+    }
+}
+
+
+
+export default function Page() {
+    return (
+        <div>
+            <h1>
+                Product List
+            </h1>
+            <table border="1">
+                <thead>
+                    <tr>    <td>Name</td>
+                        <td>Age</td>
+                        <td>Email</td>
+                        <td>Id</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    )
+}
+
+
+
+
+
+
+--src --> app --> api --> products --> route.js
+
+
+import { connectionSrt } from "@/lib/db";
+import mongoose, { isValidObjectId } from "mongoose";
+import { Product } from "@/lib/Schema/product";
+import { NextResponse } from "next/server";
+
+
+export async function GET() {
+    let data = [];
+    let success = true;
+    try {
+        await mongoose.connect(connectionSrt)
+        data = await Product.find();
+    } catch (error) {
+        data = { result: "error" }
+        success = false
+    }
+    return NextResponse.json({ result: data, success: true })
+}
+
+
+
+
+
+// export async function GET() {
+
+
+//     //    await mongoose.connect(connectionSrt)
+//     //     const data = Product.find();
+//     //     console.log(data)
+
+//     // 2nd type of part data fetch connectionSrt to result data collect
+//     let data = []
+//     try {
+//         await mongoose.connect(connectionSrt)
+//         const data = Product.find();
+//     } catch (error) {
+//         data = { success: false }
+//     }
+//     return NextResponse.json({ data })
+
+
+//     //     return NextResponse.json({result:data})
+// }
+
+
+export async function POST(request) {
+    const payload = await request.json();
+    await mongoose.connect(connectionSrt);
+    const product = new Product({ payload })
+    const result = await product.save();
+    return NextResponse.json({ result, success: true })
+}
