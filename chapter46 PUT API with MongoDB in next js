@@ -40,3 +40,34 @@ export async function GET (request, content) {
    const result = await Product.findById(record)
     return NextResponse.json(result, success=true)   
    }
+
+
+
+
+
+
+
+   ----> src ---> util ---> DeleteUser
+
+
+
+
+
+   
+"use client"
+export default function DeleteUser(props) {
+    const userId = props.id;
+    console.log(userId)
+    const Deleteuser = async()=>{
+        let result = await fetch ("http://localhost:3000/api/users/"+userId,
+        {method: "delete"
+    });
+        result= await result.json();
+        if(result.success){
+            alert("User is Deleted")
+        }
+
+    }
+    return (<button onClick={Deleteuser}>Delete</button>)
+}
+
